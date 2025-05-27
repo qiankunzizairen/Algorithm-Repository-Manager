@@ -1,6 +1,7 @@
 # Algorithm Repository Manager
 
-**Algorithm Repository Manager** 是一个使用 Python 全栈（SQLAlchemy + PyQt5）开发的本地化算法库管理工具，支持算法上传、检索、评分、评论、审核、下载、统计等全流程功能。
+**Algorithm Repository Manager** 是一个使用 Python 全栈（SQLAlchemy + PyQt5）开发的本地化算法库管理工具，支持算法上传、检索、评分、评论、审核、下载、统计等全流程功能。开发环境为macOS Sequoia，欲在Windows上测试，可能需要参考附录进行一些配置工作。
+
 
 ## 目录结构
 
@@ -104,8 +105,8 @@ Algorithm Repository Manager/
 
 ---
 
-## 附录：如果你使用的是windows系统，也许需要一些额外的配置工作
-- 预先创建普通用户/数据库：
+## 附录：如果我们的环境不一致，也许需要一些额外的配置工作（Windows系统常见问题）
+- 预先创建普通用户/数据库（如果权限足够，则不需要）：
   1. 进入MySQL：
   ```bash
   mysql -u root -p
