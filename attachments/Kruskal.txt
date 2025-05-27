@@ -1,0 +1,41 @@
+class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))
+    
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+    
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        self.parent[root_x] = root_y
+
+def kruskal(graph):
+    edges = []
+    for u in graph:
+        for v, w in graph[u]:
+            edges.append((w, u, v))
+    edges.sort()  # 按权重排序
+    
+    uf = UnionFind(len(graph))
+    mst = []
+    for w, u, v in edges:
+        if uf.find(u) != uf.find(v):
+            uf.union(u, v)
+            mst.append((u, v, w))
+    return mst
+
+# 示例图
+graph = {
+    0: [(1, 7), (2, 9), (5, 14)],
+    1: [(0, 7), (2, 10), (3, 15)],
+    2: [(0, 9), (1, 10), (3, 11), (5, 2)],
+    3: [(1, 15), (2, 11), (4, 6)],
+    4: [(3, 6), (5, 9)],
+    5: [(0, 14), (2, 2), (4, 9)]
+}
+
+mst = kruskal(graph)
+print("最小生成树的边：", mst)

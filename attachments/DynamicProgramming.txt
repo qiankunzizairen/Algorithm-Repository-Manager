@@ -1,0 +1,21 @@
+def knapsack(weights, values, W):
+    n = len(weights)
+    # 初始化动态规划表 (n+1) x (W+1)
+    dp = [[0] * (W + 1) for _ in range(n + 1)]
+    
+    for i in range(1, n + 1):
+        for w in range(1, W + 1):
+            if weights[i-1] <= w:
+                # 选或不选当前物品
+                dp[i][w] = max(dp[i-1][w], values[i-1] + dp[i-1][w - weights[i-1]])
+            else:
+                # 当前物品超重
+                dp[i][w] = dp[i-1][w]
+    
+    return dp[n][W]
+
+# 示例
+weights = [2, 3, 4, 5]  # 物品重量
+values = [3, 4, 5, 6]   # 物品价值
+W = 8                   # 背包容量
+print("最大价值:", knapsack(weights, values, W))  # 输出: 10

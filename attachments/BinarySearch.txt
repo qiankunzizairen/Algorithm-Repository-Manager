@@ -1,0 +1,28 @@
+def search(data, num):
+    low = 0
+    high = len(data)-1
+    print('searching...')
+    while low<=high and num!=-1:
+        mid = int((low+high)/2)
+        print(mid)
+        if num < data[mid]:
+            print(f'{num} is between {data[low]} and {data[mid]}')
+            high = mid - 1
+        elif num > data[mid]:
+            print(f'{num} is between {data[mid]} and {data[high]}')
+            low = mid + 1
+        else:
+            return mid
+    return -1
+
+data = [12,45,56,66,77,80,97,101,120]
+while True:
+    loc = 0
+    num = int(input("please input the number you want to search(input -1 to exit):"))
+    if num == -1:
+        break
+    loc = search(data, num)
+    if loc == -1:
+        print('not found')
+    else:
+        print(f'find the number in data[{loc}]')
